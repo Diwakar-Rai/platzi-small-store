@@ -1,0 +1,52 @@
+<h2>Register</h2>
+@if (errorMessage) {
+  <p style="color: red">{{ errorMessage }}</p>
+}
+
+@if (successMessage) {
+  <p style="color: green">{{ successMessage }}</p>
+}
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name" />
+
+    @if (registerForm.get('name')?.touched && registerForm.get('name')?.invalid) {
+      <p>Name is required</p>
+    }
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+
+    @if (registerForm.get('email')?.touched && registerForm.get('email')?.invalid) {
+      <p>Valid email is required</p>
+    }
+  </div>
+
+  <div>
+    <label>Password</label>
+    <input type="password" formControlName="password" />
+
+    @if (registerForm.get('password')?.touched && registerForm.get('password')?.invalid) {
+      <p>Password must be at least 6 characters</p>
+    }
+  </div>
+  <div>
+    <label>Avatar</label>
+    <input type="text" formControlName="avatar" />
+
+    @if (registerForm.get('avatar')?.touched && registerForm.get('avatar')?.invalid) {
+      <p>Avatar is required</p>
+    }
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">Register</button>
+</form>
+
+<p>
+  Already have an account?
+  <a routerLink="/login">Login</a>
+</p>
