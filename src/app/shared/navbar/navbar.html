@@ -3,6 +3,8 @@
 
   <div class="links">
     @if (authService.isLoggedIn()) {
+      <a routerLink="/products">Products</a>
+
       <button (click)="logout()">Logout</button>
     } @else {
       <a routerLink="/login">Login</a>

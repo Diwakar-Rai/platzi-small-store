@@ -1,0 +1,10 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: 24% 24% 24% 24%;
+  gap: 16px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  padding: 10px;
+}

@@ -1,0 +1,21 @@
+<h2>Products</h2>
+
+@if (isLoading()) {
+  <p>Loading products...</p>
+}
+
+@if (errorMessage()) {
+  <p style="color: red">{{ errorMessage() }}</p>
+}
+
+@if (!isLoading() && !errorMessage()) {
+  <div class="product-grid">
+    @for (product of products(); track product.id) {
+      <div class="product-card">
+        <img [src]="product.images[0]" alt="{{ product.title }}" width="150" />
+        <h3>{{ product.title }}</h3>
+        <p>₹ {{ product.price }}</p>
+      </div>
+    }
+  </div>
+}
