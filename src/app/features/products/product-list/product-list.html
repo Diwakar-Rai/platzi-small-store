@@ -11,7 +11,7 @@
 @if (!isLoading() && !errorMessage()) {
   <div class="product-grid">
     @for (product of products(); track product.id) {
-      <div class="product-card">
+      <div class="product-card" [routerLink]="['/products', product.id]">
         <img [src]="product.images[0]" alt="{{ product.title }}" width="150" />
         <h3>{{ product.title }}</h3>
         <p>₹ {{ product.price }}</p>

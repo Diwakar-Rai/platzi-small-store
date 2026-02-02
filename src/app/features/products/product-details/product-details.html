@@ -1,0 +1,17 @@
+@if (isLoading()) {
+  <p>Loading product...</p>
+}
+
+@if (errorMessage()) {
+  <p style="color: red">{{ errorMessage() }}</p>
+}
+
+@if (product()) {
+  <div class="product-detail">
+    <img [src]="product()!.images[0]" alt="{{ product()!.title }}" width="250" />
+
+    <h2>{{ product()!.title }}</h2>
+    <p>{{ product()!.description }}</p>
+    <p><span>Price:</span> ₹ {{ product()!.price }}</p>
+  </div>
+}

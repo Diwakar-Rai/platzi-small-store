@@ -6,6 +6,7 @@ export interface Product {
   title: string;
   price: number;
   images: string[];
+  description: string;
 }
 
 @Injectable({
@@ -18,5 +19,9 @@ export class ProductService {
 
   getProducts() {
     return this.http.get<Product[]>(this.BASE_URL);
+  }
+
+  getProductById(id: string) {
+    return this.http.get<Product>(`${this.BASE_URL}/${id}`);
   }
 }
