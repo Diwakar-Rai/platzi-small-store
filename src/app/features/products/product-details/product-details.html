@@ -1,17 +1,25 @@
-@if (isLoading()) {
-  <p>Loading product...</p>
-}
+<div class="page">
+  <a class="back-link" routerLink="/products">← Back to products</a>
 
-@if (errorMessage()) {
-  <p style="color: red">{{ errorMessage() }}</p>
-}
+  @if (isLoading()) {
+    <p>Loading product...</p>
+  }
 
-@if (product()) {
-  <div class="product-detail">
-    <img [src]="product()!.images[0]" alt="{{ product()!.title }}" width="250" />
+  @if (errorMessage()) {
+    <p style="color: red">{{ errorMessage() }}</p>
+  }
 
-    <h2>{{ product()!.title }}</h2>
-    <p>{{ product()!.description }}</p>
-    <p><span>Price:</span> ₹ {{ product()!.price }}</p>
-  </div>
-}
+  @if (product()) {
+    <div class="product-detail">
+      <div class="image-section">
+        <img [src]="product()!.images[0]" alt="{{ product()!.title }}" width="250" />
+      </div>
+
+      <div class="info">
+        <h2>{{ product()!.title }}</h2>
+        <p class="description">{{ product()!.description }}</p>
+        <p class="price"><span>Price:</span> ₹ {{ product()!.price }}</p>
+      </div>
+    </div>
+  }
+</div>

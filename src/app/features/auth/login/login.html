@@ -1,29 +1,33 @@
-<h2>Login</h2>
-@if (errorMessage) {
-  <p style="color: red">{{ errorMessage }}</p>
-}
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label>Email</label><br />
-    <input type="email" formControlName="email" />
-
-    @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
-      <p>Email is required and must be valid</p>
+<div class="auth-page">
+  <div class="auth-card">
+    <h2>Login</h2>
+    @if (errorMessage) {
+      <p style="color: red">{{ errorMessage }}</p>
     }
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" />
+
+        @if (loginForm.get('email')?.touched && loginForm.get('email')?.invalid) {
+          <p class="error">Email is required and must be valid</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" formControlName="password" />
+
+        @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+          <p class="error">Password must be at least 6 characters</p>
+        }
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="primary">Login</button>
+    </form>
+    <p class="auth-footer">
+      Don't have an account?
+      <a routerLink="/register">register</a>
+    </p>
   </div>
-
-  <div>
-    <label>Password</label><br />
-    <input type="password" formControlName="password" />
-
-    @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
-      <p>Password must be at least 6 characters</p>
-    }
-  </div>
-
-  <button type="submit" [disabled]="loginForm.invalid">Login</button>
-</form>
-<p>
-  Don't have an account?
-  <a routerLink="/register">register</a>
-</p>
+</div>
